@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐理小屋 - 免费音乐学习平台</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">&#9836;</span>
+            <span class="brand-text">乐理小屋</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-section="tools">
+                <span class="icon">&#128295;</span>工具箱
+            </button>
+            <button class="nav-btn" data-section="tutorials">
+                <span class="icon">&#127891;</span>教程
+            </button>
+            <button class="nav-btn" data-section="ai">
+                <span class="icon">&#129302;</span>AI助手
+            </button>
+            <button class="nav-btn" data-section="support">
+                <span class="icon">&#10084;</span>支持我们
+            </button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
+    </nav>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="nav-btn active" data-section="tools" onclick="switchSection('tools');toggleMobileMenu()">
+            <span class="icon">&#128295;</span>工具箱
+        </button>
+        <button class="nav-btn" data-section="tutorials" onclick="switchSection('tutorials');toggleMobileMenu()">
+            <span class="icon">&#127891;</span>教程
+        </button>
+        <button class="nav-btn" data-section="ai" onclick="switchSection('ai');toggleMobileMenu()">
+            <span class="icon">&#129302;</span>AI助手
+        </button>
+        <button class="nav-btn" data-section="support" onclick="switchSection('support');toggleMobileMenu()">
+            <span class="icon">&#10084;</span>支持我们
+        </button>
+    </div>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+
+        <!-- ========== 工具箱模块 ========== -->
+        <section id="tools" class="section active">
+            <div class="section-header">
+                <h1>&#127925; 乐理学习工具箱</h1>
+                <p>免费在线音乐理论工具，随时计算、随时查询</p>
+            </div>
+
+            <div class="tools-grid">
+                <!-- 音程计算器 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">&#9838;</span>
+                        <h3>音程计算器</h3>
+                    </div>
+                    <div class="tool-body">
+                        <div class="input-group">
+                            <label>起始音</label>
+                            <select id="intervalNote1">
+                                <option value="C">C</option>
+                                <option value="C#">C# / Db</option>
+                                <option value="D">D</option>
+                                <option value="D#">D# / Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F# / Gb</option>
+                                <option value="G">G</option>
+                                <option value="G#">G# / Ab</option>
+                                <option value="A">A</option>
+                                <option value="A#">A# / Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>目标音</label>
+                            <select id="intervalNote2">
+                                <option value="C">C</option>
+                                <option value="C#">C# / Db</option>
+                                <option value="D">D</option>
+                                <option value="D#">D# / Eb</option>
+                                <option value="E" selected>E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F# / Gb</option>
+                                <option value="G">G</option>
+                                <option value="G#">G# / Ab</option>
+                                <option value="A">A</option>
+                                <option value="A#">A# / Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <button class="calc-btn" onclick="calculateInterval()">计算音程</button>
+                        <div class="result-box" id="intervalResult">
+                            <div class="result-placeholder">选择两个音符，点击计算</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 和弦查询器 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">&#9837;</span>
+                        <h3>和弦查询器</h3>
+                    </div>
+                    <div class="tool-body">
+                        <div class="input-group">
+                            <label>根音</label>
+                            <select id="chordRoot">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#</option>
+                                <option value="A">A</option>
+                                <option value="A#">A#</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>和弦类型</label>
+                            <select id="chordType">
+                                <option value="major">大三和弦 (Major)</option>
+                                <option value="minor">小三和弦 (Minor)</option>
+                                <option value="dim">减三和弦 (Dim)</option>
+                                <option value="aug">增三和弦 (Aug)</option>
+                                <option value="maj7">大七和弦 (Maj7)</option>
+                                <option value="min7">小七和弦 (Min7)</option>
+                                <option value="dom7">属七和弦 (7)</option>
+                                <option value="min7b5">半减七和弦 (m7b5)</option>
+                                <option value="dim7">减七和弦 (dim7)</option>
+                                <option value="sus4">挂四和弦 (sus4)</option>
+                            </select>
+                        </div>
+                        <button class="calc-btn" onclick="lookupChord()">查询和弦</button>
+                        <div class="result-box" id="chordResult">
+                            <div class="result-placeholder">选择和弦，点击查询</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 调式生成器 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">&#127932;</span>
+                        <h3>调式音阶生成器</h3>
+                    </div>
+                    <div class="tool-body">
+                        <div class="input-group">
+                            <label>主音</label>
+                            <select id="scaleRoot">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#</option>
+                                <option value="A">A</option>
+                                <option value="A#">A#</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>调式</label>
+                            <select id="scaleType">
+                                <option value="major">自然大调 (Major)</option>
+                                <option value="minor">自然小调 (Natural Minor)</option>
+                                <option value="harmonicMinor">和声小调 (Harmonic Minor)</option>
+                                <option value="melodicMinor">旋律小调 (Melodic Minor)</option>
+                                <option value="dorian">多利亚调式 (Dorian)</option>
+                                <option value="phrygian">弗里几亚调式 (Phrygian)</option>
+                                <option value="lydian">利底亚调式 (Lydian)</option>
+                                <option value="mixolydian">混合利底亚 (Mixolydian)</option>
+                                <option value="locrian">洛克里亚调式 (Locrian)</option>
+                                <option value="pentatonicMajor">大调五声音阶</option>
+                                <option value="pentatonicMinor">小调五声音阶</option>
+                                <option value="blues">布鲁斯音阶</option>
+                            </select>
+                        </div>
+                        <button class="calc-btn" onclick="generateScale()">生成音阶</button>
+                        <div class="result-box" id="scaleResult">
+                            <div class="result-placeholder">选择调式，点击生成</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 教程模块 ========== -->
+        <section id="tutorials" class="section">
+            <div class="section-header">
+                <h1>&#127891; 音乐教程</h1>
+                <p>从零基础到进阶，系统学习音乐知识</p>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="theory">乐理基础</button>
+                <button class="filter-btn" data-filter="production">编曲制作</button>
+                <button class="filter-btn" data-filter="vocal">声乐训练</button>
+            </div>
+
+            <div class="tutorial-grid">
+                <div class="tutorial-card" data-category="theory">
+                    <div class="tutorial-badge">入门</div>
+                    <h3>五线谱速识指南</h3>
+                    <p class="tutorial-desc">30分钟掌握五线谱基础：音符、谱号、节拍与基本节奏型。适合零基础初学者。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 30分钟</span>
+                        <span>&#128218; 图文教程</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="theory">
+                    <div class="tutorial-badge">入门</div>
+                    <h3>音程完全手册</h3>
+                    <p class="tutorial-desc">从纯一度到复音程，系统理解音程的名称、性质、半音数与听感特征。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 45分钟</span>
+                        <span>&#127925; 含音频示例</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="theory">
+                    <div class="tutorial-badge">进阶</div>
+                    <h3>和弦进行实战</h3>
+                    <p class="tutorial-desc">掌握常用和弦进行：I-V-vi-IV、ii-V-I、降七级等，附流行歌曲实例分析。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 60分钟</span>
+                        <span>&#127908; 视频课程</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="production">
+                    <div class="tutorial-badge">进阶</div>
+                    <h3>Cubase编曲入门</h3>
+                    <p class="tutorial-desc">从零开始学编曲：MIDI录入、音色选择、鼓组编写、弦乐铺底，附工程文件下载。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 12课时</span>
+                        <span>&#128230; 含工程文件</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="production">
+                    <div class="tutorial-badge">高级</div>
+                    <h3>混音母带精修</h3>
+                    <p class="tutorial-desc">EQ均衡、压缩器使用、混响空间设计、母带响度标准，让你的作品达到发行级别。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 20课时</span>
+                        <span>&#127908; 视频+工程</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="vocal">
+                    <div class="tutorial-badge">入门</div>
+                    <h3>科学发声基础</h3>
+                    <p class="tutorial-desc">腹式呼吸、声带保护、音域拓展、真假声转换，建立正确的唱歌习惯。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 8课时</span>
+                        <span>&#127908; 视频教程</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="vocal">
+                    <div class="tutorial-badge">进阶</div>
+                    <h3>视唱练耳训练</h3>
+                    <p class="tutorial-desc">固定调/首调视唱、单音/音程/和弦听辨、旋律听写，附每日训练计划。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 持续训练</span>
+                        <span>&#127925; 音频训练</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+
+                <div class="tutorial-card" data-category="theory">
+                    <div class="tutorial-badge">高级</div>
+                    <h3>斯波索宾和声学</h3>
+                    <p class="tutorial-desc">经典和声学教材精读：正三和弦、副三和弦、七和弦、转调、模进与和声分析。</p>
+                    <div class="tutorial-meta">
+                        <span>&#9201; 系统课程</span>
+                        <span>&#128218; 理论+习题</span>
+                    </div>
+                    <button class="tutorial-btn">开始学习</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== AI助手模块 ========== -->
+        <section id="ai" class="section">
+            <div class="section-header">
+                <h1>&#129302; AI音乐问答助手</h1>
+                <p>有任何乐理问题？随时问我！</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">&#129302;</div>
+                        <div class="message-content">
+                            <p>你好！我是你的AI音乐学习助手。我可以帮你：</p>
+                            <ul>
+                                <li>解答乐理概念（音程、和弦、调式等）</li>
+                                <li>分析和弦进行与歌曲和声</li>
+                                <li>推荐学习路径与练习方法</li>
+                                <li>计算音程、推导调式、解释音乐术语</li>
+                            </ul>
+                            <p>试试问我：<em>"Cmaj7和弦怎么构成？"</em> 或 <em>"什么是属七和弦？"</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <div class="quick-questions">
+                        <button class="quick-btn" onclick="sendQuickQuestion('什么是大三度？')">什么是大三度？</button>
+                        <button class="quick-btn" onclick="sendQuickQuestion('G大调有几个升降号？')">G大调有几个升降号？</button>
+                        <button class="quick-btn" onclick="sendQuickQuestion('ii-V-I是什么意思？')">ii-V-I是什么意思？</button>
+                        <button class="quick-btn" onclick="sendQuickQuestion('如何区分大调和小调？')">如何区分大调和小调？</button>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="chatInput" placeholder="输入你的音乐问题..." onkeypress="handleChatKeypress(event)">
+                        <button class="send-btn" onclick="sendChatMessage()">&#10148;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-note">
+                <p>&#8505; 本助手基于内置知识库回答常见问题。在实际部署中，可接入大语言模型API实现更强大的问答能力。</p>
+            </div>
+        </section>
+
+        <!-- ========== 支持模块 ========== -->
+        <section id="support" class="section">
+            <div class="section-header">
+                <h1>&#10084; 支持乐理小屋</h1>
+                <p>你的每一份支持，都是我们持续创作的动力</p>
+            </div>
+
+            <div class="support-content">
+                <div class="support-intro">
+                    <div class="heart-animation">&#10084;</div>
+                    <h2>为什么需要你的支持？</h2>
+                    <p>乐理小屋的所有工具与教程<strong>完全免费</strong>开放给每一位音乐爱好者。为了维持服务器运营、持续创作新内容、开发更多实用工具，我们需要社区的支持。</p>
+                    <p>每一份支持，无论大小，都意味着你认可我们所做的一切。</p>
+                </div>
+
+                <div class="support-options">
+                    <div class="support-card">
+                        <div class="support-icon">&#9749;</div>
+                        <h3>请喝咖啡</h3>
+                        <p class="support-price">¥5 / ¥15 / ¥30</p>
+                        <p class="support-desc">一次性支持，金额随意。就像请我喝杯咖啡，表达你的感谢。</p>
+                        <button class="support-btn primary" onclick="showToast('在实际部署中，这里将跳转到支付页面')">&#9749; 请喝咖啡</button>
+                    </div>
+
+                    <div class="support-card featured">
+                        <div class="support-badge">推荐</div>
+                        <div class="support-icon">&#11088;</div>
+                        <h3>月度支持者</h3>
+                        <p class="support-price">¥15/月</p>
+                        <p class="support-desc">每月一杯奶茶的钱，获得专属支持者标识、提前体验新功能、加入支持者交流群。</p>
+                        <button class="support-btn primary" onclick="showToast('在实际部署中，这里将跳转到订阅页面')">&#11088; 成为月度支持者</button>
+                    </div>
+
+                    <div class="support-card">
+                        <div class="support-icon">&#128220;</div>
+                        <h3>年度赞助</h3>
+                        <p class="support-price">¥128/年</p>
+                        <p class="support-desc">一次性支持一整年。你的名字将出现在网站支持者名单中，获得全部进阶教程访问权。</p>
+                        <button class="support-btn primary" onclick="showToast('在实际部署中，这里将跳转到年度赞助页面')">&#128220; 年度赞助</button>
+                    </div>
+                </div>
+
+                <div class="support-alternatives">
+                    <h3>&#128161; 其他支持方式</h3>
+                    <div class="alt-methods">
+                        <div class="alt-method">
+                            <span class="alt-icon">&#128172;</span>
+                            <div>
+                                <h4>分享给朋友</h4>
+                                <p>把乐理小屋推荐给需要的人，是最好的免费支持</p>
+                            </div>
+                        </div>
+                        <div class="alt-method">
+                            <span class="alt-icon">&#128077;</span>
+                            <div>
+                                <h4>留下反馈</h4>
+                                <p>告诉我们你需要什么工具或教程，帮助我们改进</p>
+                            </div>
+                        </div>
+                        <div class="alt-method">
+                            <span class="alt-icon">&#127760;</span>
+                            <div>
+                                <h4>开源贡献</h4>
+                                <p>如果你会写代码，欢迎参与工具开发（GitHub开源）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="supporters-section">
+                    <h3>&#127942; 感谢以下支持者</h3>
+                    <div class="supporters-list">
+                        <span class="supporter-tag">音乐爱好者A</span>
+                        <span class="supporter-tag">编曲小白</span>
+                        <span class="supporter-tag">钢琴学徒</span>
+                        <span class="supporter-tag">吉他手Jack</span>
+                        <span class="supporter-tag">声乐老师</span>
+                        <span class="supporter-tag">电子音乐人</span>
+                        <span class="supporter-tag">艺考学生</span>
+                        <span class="supporter-tag">音乐制作人</span>
+                        <span class="supporter-tag">乐理达人</span>
+                        <span class="supporter-tag">更多朋友...</span>
+                    </div>
+                    <p class="supporters-note">* 本页展示的支持者均为示例数据，实际部署后将显示真实支持者</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo">&#9836;</span>
+                <span>乐理小屋</span>
+            </div>
+            <p class="footer-desc">免费音乐学习平台 | 让每个人都有机会学习音乐</p>
+            <div class="footer-links">
+                <a href="#" onclick="switchSection('tools');return false">工具箱</a>
+                <a href="#" onclick="switchSection('tutorials');return false">教程</a>
+                <a href="#" onclick="switchSection('ai');return false">AI助手</a>
+                <a href="#" onclick="switchSection('support');return false">支持我们</a>
+            </div>
+            <p class="footer-copy">&#169; 2026 乐理小屋 | 所有工具与教程免费使用</p>
+        </div>
+    </footer>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
