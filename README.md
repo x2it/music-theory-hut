@@ -2,12 +2,16 @@
 
 > 一个免费、开源的在线音乐理论学习平台。让每个人都有机会学习乐理知识。
 
+**Music Theory Hut** is a free, open-source online platform for learning music theory: interval / chord / scale calculators, tutorials, and an AI Q&A assistant — all running client-side in the browser, zero backend, installable PWA.
+
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
   <img src="https://img.shields.io/badge/language-HTML%2FCSS%2FJS-orange.svg" alt="HTML/CSS/JS">
   <img src="https://img.shields.io/badge/platform-Web-green.svg" alt="Web">
   <img src="https://img.shields.io/badge/中文-支持-brightgreen.svg" alt="中文">
 </p>
+
+<img src="https://raw.githubusercontent.com/x2it/music-theory-hut/main/banner.png" alt="乐理小屋 · Music Theory Hut" width="100%">
 
 ---
 
@@ -246,10 +250,14 @@ const TOOLS = {
 | 渠道 | 链接 |
 |------|------|
 | GitHub Issues | [提交 Issue](https://github.com/YOUR_USERNAME/music-theory-hut/issues) |
-| 邮件 | your-email@example.com |
+| 邮件 | support@w3b.pub |
 
 ---
 
 <p align="center">
   <b>让音乐学习，触手可及。</b>
 </p>
+
+---
+
+[MIT](LICENSE) © 2026 知行工作室 Zhixing Studio · [https://w3b.pub/](https://w3b.pub/) · support@w3b.pub
