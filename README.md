@@ -9,6 +9,7 @@
   <img src="https://img.shields.io/badge/language-HTML%2FCSS%2FJS-orange.svg" alt="HTML/CSS/JS">
   <img src="https://img.shields.io/badge/platform-Web-green.svg" alt="Web">
   <img src="https://img.shields.io/badge/中文-支持-brightgreen.svg" alt="中文">
+  <img src="https://img.shields.io/github/v/tag/x2it/music-theory-hut?label=version" alt="Version">
 </p>
 
 <img src="https://raw.githubusercontent.com/x2it/music-theory-hut/main/banner.png" alt="乐理小屋 · Music Theory Hut" width="100%">
