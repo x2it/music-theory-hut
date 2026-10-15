@@ -1,6 +1,8 @@
 # 乐理小屋 Music Theory Hut
 
 > 一个免费、开源的在线音乐理论学习平台。让每个人都有机会学习乐理知识。
+>
+> 当前版本：**v1.0.0**
 
 **Music Theory Hut** is a free, open-source online platform for learning music theory: interval / chord / scale calculators, tutorials, and an AI Q&A assistant — all running client-side in the browser, zero backend, installable PWA.
 
@@ -250,7 +252,7 @@ const TOOLS = {
 
 | 渠道 | 链接 |
 |------|------|
-| GitHub Issues | [提交 Issue](https://github.com/YOUR_USERNAME/music-theory-hut/issues) |
+| GitHub Issues | [提交 Issue](https://github.com/x2it/music-theory-hut/issues) |
 | 邮件 | support@w3b.pub |
 
 ---
