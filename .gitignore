@@ -1,0 +1,23 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+build/
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 环境变量
+.env
+.env.*
+
+# 日志
+*.log
+
+# 临时文件
+*.tmp
+*.bak
