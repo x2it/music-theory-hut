@@ -1,4 +1,4 @@
-# 乐理小屋 Music Theory Hut
+# 乐理小屋 · Music Theory Hut
 
 > 一个免费、开源的在线音乐理论学习平台。让每个人都有机会学习乐理知识。
 >
@@ -30,7 +30,7 @@
 
 ## 在线体验
 
-&#127760; **Demo 地址**：[https://app-e3liw7mkzu9t.miaoda.online](https://app-e3liw7mkzu9t.miaoda.online)
+**Demo 地址**：[https://app-e3liw7mkzu9t.miaoda.online](https://app-e3liw7mkzu9t.miaoda.online)
 
 > 提示：本项目为纯前端应用，下载后双击 `index.html` 即可在浏览器中运行，无需服务器。
 
@@ -182,10 +182,10 @@ async function queryAI(question) {
 
 | 平台 | 难度 | 适用场景 |
 |------|------|---------|
-| **爱发电** | ⭐ 低 | 中文用户，"请喝咖啡"模式 |
-| **Ko-fi** | ⭐ 低 | 国际用户 |
-| **微信支付** | ⭐⭐⭐ 高 | 需要企业资质 |
-| **Stripe** | ⭐⭐ 中 | 国际信用卡支付 |
+| **爱发电** | 低 | 中文用户，"请喝咖啡"模式 |
+| **Ko-fi** | 低 | 国际用户 |
+| **微信支付** | 高 | 需要企业资质 |
+| **Stripe** | 中 | 国际信用卡支付 |
 
 ### 添加新工具
 
